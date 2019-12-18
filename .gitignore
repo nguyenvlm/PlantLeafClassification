@@ -132,3 +132,9 @@ dmypy.json
 Leaves/*
 *.tar.bz2
 *.tar
+
+# NodeJS ignore
+node_modules
+
+#Electron-builder output
+/dist_electron

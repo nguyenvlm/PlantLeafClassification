@@ -8,9 +8,9 @@ module.exports = {
   extends: ["plugin:vue/essential", "@vue/prettier"],
 
   rules: {
-    "no-console": "off",
-    "no-debugger": "off",
-    "vue/no-unused-vars": "warning"
+    "no-console": 0,
+    "no-debugger": 0,
+    "vue/no-unused-vars": 1
   },
 
   parserOptions: {

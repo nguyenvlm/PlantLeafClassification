@@ -6,14 +6,18 @@
 
 
 **Desciption:** 
-> Our jobs are build and compare three classification methods to recognise a tree from their leaves.
+> Our work are to build and compare three classification methods to recognise a tree from their leaves.
 
 **Contributors:** Nguyen Vuong Le Minh, Tam Luong <br>
 
 **Dataset:** [Flavia](http://flavia.sourceforge.net)
 
-## **Research Notebook**
-You can take a look at our notebook `Notebook.ipynb` using Jupyter Notebook or Upload it to [Google Colab](https://colab.google.com/).
+## **Research Resource**
+### Notebook
+You can take a look at our notebook **`Notebook.ipynb`** using Jupyter Notebook or Upload it to [Google Colab](https://colab.google.com/).
+
+### Paper & Poster
+Our paper and poster are in **`papers`** folder
 
 ## **Application**
 <p align="center">
@@ -24,30 +28,31 @@ You can take a look at our notebook `Notebook.ipynb` using Jupyter Notebook or U
 </p>
 
 ### Download Prebuild
+[**Windows Installation**](https://drive.google.com/open?id=1IXeuHQvPx4mzr6nnYJtbVJgZ4yMPYMr5)
 
 ### Development
-#### Project setup
+#### Clone this repository
+```bash
+git clone https://github.com/nguyenvlm/PlantLeafClassification.git
 ```
+#### Install Dependencies
+```bash
 npm install
 ```
-
 #### Compiles and hot-reloads for development
-```
-npm run serve
+```bash
+npm run electron:serve
 ```
 
 #### Compiles and minifies for production
-```
-npm run build
+```bash
+npm run electron:build
 ```
 
 #### Lints and fixes files
-```
+```bash
 npm run lint
 ```
-
-#### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## **References**
 

@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div class="container" v-if="tf_ready && cv_ready">
-      <Upload v-if="!image" @imageuploaded="set_image" />
-      <Result v-else :image="image" @removeimage="remove_image" />
+      <Upload v-if="!file" @imageuploaded="set_image" />
+      <Result v-else :file="file" @removeimage="remove_image" />
     </div>
     <div class="container" v-else>
       <Loader
         :msg="
-          `Loading ${tf_ready ? ' ' : 'TensorflowJS '}${!tf_ready && !cv_ready ? '& ' : ' '}${
-            cv_ready ? '' : 'OpenCV.js'
-          }`
+          `Loading ${tf_ready ? ' ' : 'TensorflowJS '}${
+            !tf_ready && !cv_ready ? '& ' : ' '
+          }${cv_ready ? '' : 'OpenCV.js'}`
         "
       />
     </div>
@@ -25,7 +25,7 @@ export default {
   name: "App",
   data() {
     return {
-      image: null,
+      file: null,
       tf_ready: false,
       cv_ready: false,
       app_ready: false
@@ -43,12 +43,12 @@ export default {
     }
   },
   methods: {
-    set_image(image) {
-      this.$set(this, "image", image);
-      console.log("Setting Image");
+    set_image(file) {
+      this.$set(this, "file", file);
+      console.log("Loading Image");
     },
     remove_image() {
-      this.$set(this, "image", null);
+      this.$set(this, "file", null);
       console.log("Removing Image");
     }
   },

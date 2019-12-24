@@ -7,10 +7,23 @@
     @dragleave="dragleave"
     dropzone
   >
-    <img id="logo" alt="Leaf" src="@assets/logo.png" />
+    <font-awesome-icon
+      id="logo"
+      :icon="['fas', 'sign-in-alt']"
+      size="10x"
+      rotation="90"
+      v-if="dragover"
+    />
+    <font-awesome-icon
+      id="logo"
+      :icon="['fab', 'pagelines']"
+      size="10x"
+      :style="{ color: '#39b77e' }"
+      v-else
+    />
     <h1>Plant Leaf Classification Application</h1>
     <p>Drop your leaf here and we will tell you the plant 🏝</p>
-    <form>
+    <form style="padding: 5px;">
       <input type="file" accept="image/*" @change="selector_change($event)" />
     </form>
   </div>
@@ -19,6 +32,11 @@
 <script>
 export default {
   name: "Upload",
+  data() {
+    return {
+      dragover: false
+    };
+  },
   methods: {
     drop(event) {
       console.log("File dropped");
@@ -28,9 +46,15 @@ export default {
     },
     dragenter() {
       console.log("File entered drop zone");
+
+      this.dragover = true;
+      document.getElementById("upload").classList.add("thính");
     },
     dragleave() {
       console.log("File leaved drop zone");
+
+      this.dragover = false;
+      document.getElementById("upload").classList.remove("thính");
     },
     selector_change(event) {
       let file = event.target.files[0];
@@ -55,14 +79,21 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  transition: 0.3s opacity;
+
+  &.thính {
+    opacity: 0.5;
+  }
 
   *:not(input) {
     pointer-events: none;
     user-select: none;
   }
 
-  img {
+  #logo {
     width: 300px;
+    margin-bottom: 20px;
   }
 
   p {

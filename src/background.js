@@ -1,7 +1,12 @@
 "use strict";
 
 import { app, protocol, BrowserWindow, globalShortcut } from "electron";
-import { createProtocol, installVueDevtools } from "vue-cli-plugin-electron-builder/lib";
+import {
+  createProtocol,
+  installVueDevtools
+} from "vue-cli-plugin-electron-builder/lib";
+import { normalize } from "path";
+
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -9,17 +14,31 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 let win;
 
 // Scheme must be registered before the app is ready
-protocol.registerSchemesAsPrivileged([{ scheme: "app", privileges: { secure: true, standard: true } }]);
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: "app",
+    privileges: {
+      secure: true,
+      standard: true,
+      corsEnabled: false,
+      supportFetchAPI: true,
+	  allowServiceWorkers: true
+    }
+  }
+]);
 
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
+    width: 1024,
     height: 600,
+    fullscreen: false,
     webPreferences: {
       nodeIntegration: true
     }
   });
+
+  win.removeMenu();
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -28,22 +47,27 @@ function createWindow() {
   } else {
     createProtocol("app");
     // Load the index.html when not in development
-    win.loadURL("app://./index.html");
+
+    // win.loadURL(`app://./index.html`);
+	win.loadURL(`file://${__dirname}/index.html`);
   }
 
-  win.removeMenu();
+  //win.webContents.openDevTools();
 
   win.on("closed", () => {
     win = null;
   });
 
   // My code
-  globalShortcut.register("f5", function() {
-    win.reload();
-  });
-  globalShortcut.register("CommandOrControl+R", function() {
-    win.reload();
-  });
+  if (isDevelopment) {
+    win.maximize();
+    globalShortcut.register("f5", function () {
+      win.reload();
+    });
+    globalShortcut.register("CommandOrControl+R", function () {
+      win.reload();
+    });
+  }
 }
 
 // Quit when all windows are closed.
@@ -80,6 +104,14 @@ app.on("ready", async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }
+  /*else {
+	protocol.registerFileProtocol('atom', (request, callback) => {
+	  const url = request.url.substr(7)
+      callback({ path: path.normalize(`${__dirname}/${url}`) })
+    }, (error) => {
+      if (error) console.error('Failed to register protocol')
+    })
+  }*/
   createWindow();
 });
 

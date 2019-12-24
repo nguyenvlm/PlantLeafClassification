@@ -15,15 +15,30 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       builderOptions: {
+        appId: "com.planleafclassification.app",
         win: {
-          icon: "./icon.ico"
+          icon: "./src/assets/icon.png"
         },
         linux: {
-          icon: "./icon.ico"
+          icon: "./src/assets/icon.png"
         }
-      }
+      },
+      customFileProtocol: "./"
     }
   },
 
-  publicPath: ""
+  pwa: {
+    name: "Plant Leaf Classification",
+    msTileColor: "#39b77e",
+    manifestOptions: {
+      display: "standalone",
+      background_color: "#f0fff9"
+    },
+    workboxPluginMode: "GenerateSW",
+    workboxOptions: {
+      navigateFallback: "index.html"
+    }
+  },
+
+  productionSourceMap: false
 };

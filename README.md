@@ -1,8 +1,8 @@
 # Plant Leaf Classification
-<div style="text-align: center;">
+<p align="center">
   <img src="./src/assets/icon.png" width="200"><br>
-<i><strong>"Leaves grow from tree"</strong></i>
-</div>
+  <i><strong>"Leaves grow from tree"</strong></i>
+</p>
 
 
 **Desciption:** 
@@ -16,12 +16,12 @@
 You can take a look at our notebook `Notebook.ipynb` using Jupyter Notebook or Upload it to [Google Colab](https://colab.google.com/).
 
 ## **Application**
-<div style="text-align: center;">
+<p align="center">
   <img src="./screenshot/application.png"> <br>
   User Interface <br>
   <img src="./screenshot/application.0.png"> <br> 
   Result
-</div>
+</p>
 
 ### Download Prebuild
 

@@ -1,0 +1,7 @@
+Nhóm Lương Công Tâm (43.01.104.157), Vương Lê Minh Nguyên (43.01.104.117)
+
+Tên đề tài: Nâng cao hiệu quả mô hình Convolutional Neural Network nhận diện loài cây qua hình ảnh lá cây sử dụng các lớp Denoising Convolutional Autoencoder và áp dụng Data Augmentation trong quá trình học
+
+Link Github Repository: https://github.com/nguyenvlm/PlantLeafClassification
+
+Link cài đặt phần mềm (File quá lớn, không bỏ lên Github được): https://drive.google.com/open?id=1IXeuHQvPx4mzr6nnYJtbVJgZ4yMPYMr5

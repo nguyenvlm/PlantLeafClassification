@@ -139,3 +139,5 @@ node_modules
 #Electron-builder output
 /dist_electron
 *.zip
+
+FlaviaLeafClassifier_FinalModel.hdf5
